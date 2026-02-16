@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pawaPay Sandbox Tester</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1>pawaPay</h1>
+        <p>Sandbox Tester</p>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="#panel-operations" class="nav-item active" data-panel="panel-operations" data-title="Operations">
+            <span class="nav-icon">&#9654;</span> Operations
+          </a>
+        </li>
+        <li>
+          <a href="#panel-config" class="nav-item" data-panel="panel-config" data-title="Active Configuration">
+            <span class="nav-icon">&#9881;</span> Active Config
+          </a>
+        </li>
+        <li>
+          <a href="#panel-balances" class="nav-item" data-panel="panel-balances" data-title="Wallet Balances">
+            <span class="nav-icon">&#128176;</span> Wallet Balances
+          </a>
+        </li>
+        <li>
+          <a href="#panel-history" class="nav-item" data-panel="panel-history" data-title="Transaction History">
+            <span class="nav-icon">&#128196;</span> Transaction History
+          </a>
+        </li>
+        <li>
+          <a href="#panel-database" class="nav-item" data-panel="panel-database" data-title="Database">
+            <span class="nav-icon">&#128451;</span> Database
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <div class="content-header">
+        <button class="hamburger" id="hamburger-btn" type="button" aria-label="Toggle menu">&#9776;</button>
+        <h2 id="content-title">Operations</h2>
+      </div>
+
+      <main>
+        <!-- Operation Panel -->
+        <section id="panel-operations" class="panel view-panel active">
+          <h2>Operation</h2>
+          <div class="form-group">
+            <label for="op-type">Operation Type</label>
+            <select id="op-type">
+              <option value="deposit">Deposit</option>
+              <option value="payout">Payout</option>
+              <option value="refund">Refund</option>
+              <option value="check-status">Check Status</option>
+            </select>
+          </div>
+          <div id="dynamic-form"></div>
+          <button id="submit-btn" type="button">Submit</button>
+          <div id="op-result" class="result hidden"></div>
+        </section>
+
+        <!-- Active Configuration Panel -->
+        <section id="panel-config" class="panel view-panel">
+          <h2>Active Configuration</h2>
+          <button id="load-conf-btn" class="btn-sm" type="button">Load Configuration</button>
+          <div id="conf-content"></div>
+        </section>
+
+        <!-- Wallet Balances Panel -->
+        <section id="panel-balances" class="panel view-panel">
+          <h2>Wallet Balances</h2>
+          <button id="load-balances-btn" class="btn-sm" type="button">Load Balances</button>
+          <div id="balances-content"></div>
+        </section>
+
+        <!-- Transaction History Panel -->
+        <section id="panel-history" class="panel view-panel">
+          <h2>Transaction History</h2>
+          <button id="load-history-btn" class="btn-sm" type="button">Refresh</button>
+          <div id="history-content"><p class="muted">No transactions yet. Submit a deposit or payout to get started.</p></div>
+          <div id="tx-detail" class="tx-detail hidden"></div>
+        </section>
+
+        <!-- Database Panel -->
+        <section id="panel-database" class="panel view-panel">
+          <h2>Database</h2>
+          <div class="db-controls">
+            <button id="load-db-btn" class="btn-sm" type="button">Load Database</button>
+            <label class="db-auto-refresh">
+              <input type="checkbox" id="db-auto-refresh"> Auto-refresh (10s)
+            </label>
+          </div>
+          <div id="db-content"><p class="muted">Click "Load Database" to view all transactions.</p></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
