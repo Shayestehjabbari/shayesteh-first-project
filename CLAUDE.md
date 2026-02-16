@@ -10,11 +10,12 @@ shayesteh-first-project/
 ├── routes/api.js          # API route handlers for all operations
 ├── services/
 │   ├── pawapay.js         # pawaPay API client (axios, base URL: api.sandbox.pawapay.io)
-│   └── transactionStore.js # In-memory transaction log (max 200 entries)
+│   └── transactionStore.js # SQLite-backed transaction log (better-sqlite3)
 ├── public/
 │   ├── index.html         # Single-page frontend
 │   ├── app.js             # Frontend JS (dynamic forms, result rendering)
 │   └── style.css          # Styles
+├── data/                  # SQLite database directory (not committed)
 ├── .env                   # API token (PAWAPAY_API_TOKEN) — not committed
 └── .env.example           # Template for .env
 ```
@@ -25,7 +26,7 @@ shayesteh-first-project/
 - **Backend:** Express 4
 - **HTTP Client:** Axios (for pawaPay API calls)
 - **Frontend:** Vanilla HTML/CSS/JS (no framework, no build step)
-- **State:** In-memory transaction store (no database)
+- **Database:** SQLite via better-sqlite3 (WAL mode, stored in data/transactions.db)
 
 ## Setup
 
@@ -48,7 +49,7 @@ npm start                  # Runs on http://localhost:3000
 | GET    | `/api/refund-status/:id`      | Check refund status            |
 | GET    | `/api/active-conf`            | Fetch active provider config   |
 | GET    | `/api/wallet-balances`        | Fetch wallet balances          |
-| GET    | `/api/transactions`           | List in-memory transaction log |
+| GET    | `/api/transactions`           | List transaction log           |
 
 ## Key Patterns
 
